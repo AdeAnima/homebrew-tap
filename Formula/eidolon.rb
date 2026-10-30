@@ -9,16 +9,16 @@ class Eidolon < Formula
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on arch: :arm64
-  depends_on :macos
   depends_on "ffmpeg"
   depends_on "jpeg-turbo"
   depends_on "libheif"
+  depends_on :macos
   depends_on "onnxruntime"
   depends_on "opencv"
 
   def install
-    ENV["LIBCLANG_PATH"] = Formula["llvm"].opt_lib
-    ENV["EIDOLON_ORT_DYLIB_PATH"] = Formula["onnxruntime"].opt_lib/"libonnxruntime.dylib"
+    ENV["LIBCLANG_PATH"] = formula_opt_lib("llvm")
+    ENV["EIDOLON_ORT_DYLIB_PATH"] = formula_opt_lib("onnxruntime")/"libonnxruntime.dylib"
     system "cargo", "install", *std_cargo_args(path: "crates/eidolon-cli")
     prefix.install "LICENSE", "NOTICE", "THIRD_PARTY_LICENSES"
   end
