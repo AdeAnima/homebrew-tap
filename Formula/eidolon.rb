@@ -5,6 +5,11 @@ class Eidolon < Formula
   sha256 "4698c017fb4182b81bb70fca684dc833192cf4d31aff4f33e4feb195211b1614"
   license "MIT"
 
+  bottle do
+    root_url "https://github.com/AdeAnima/homebrew-tap/releases/download/eidolon-0.1.0"
+    sha256 cellar: :any, arm64_sequoia: "87480d62effb1b5dbb1b1cb176f5ded9af57acf015d5fa863845bec77c9bbae5"
+  end
+
   depends_on "llvm" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
